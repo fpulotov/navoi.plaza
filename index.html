@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навои Плаза — Премиум жилой комплекс в Душанбе</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@300;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Manrope", sans-serif;
+      }
+      .gradient-gold {
+        background: linear-gradient(
+          135deg,
+          #e68a00 0%,
+          #ffb347 50%,
+          #e68a00 100%
+        );
+      }
+      .text-gradient-gold {
+        background: linear-gradient(135deg, #e68a00 0%, #ffb347 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+      }
+      .card-shine {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 138, 0, 0.1) 0%,
+          transparent 50%
+        );
+      }
+      .gold-border {
+        border: 1px solid rgba(230, 138, 0, 0.3);
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+      .burger-line {
+        transition: all 0.3s ease;
+      }
+      .menu-open .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-open .burger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-open .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-[#111111]">
+    <!-- Sticky Header -->
+    <header
+      id="header"
+      class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
+            <img
+              src="logo.jpg"
+              alt="Навои Плаза"
+              class="w-full h-full object-cover rounded-full border-2 border-[#E68A00] shadow-sm"
+            />
+          </div>
+          <div class="flex flex-col justify-center leading-[0.9]">
+            <span
+              class="font-['Montserrat'] font-extrabold text-base sm:text-xl text-[#111111] tracking-tighter uppercase"
+              >Навои</span
+            >
+            <span
+              class="font-['Montserrat'] font-light text-base sm:text-xl text-[#111111] uppercase tracking-[0.1em]"
+              >Плаза</span
+            >
+          </div>
+        </div>
+
+        <!-- Mobile Call Button & Burger -->
+        <div class="flex items-center gap-3">
+          <a
+            href="tel:+992946377777"
+            class="gradient-gold text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+          >
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Позвонить</span>
+          </a>
+          <button
+            id="burger"
+            class="lg:hidden flex flex-col gap-1.5 p-2"
+            onclick="toggleMenu()"
+          >
+            <span class="burger-line w-6 h-0.5 bg-[#111111] block"></span>
+            <span class="burger-line w-6 h-0.5 bg-[#111111] block"></span>
+            <span class="burger-line w-6 h-0.5 bg-[#111111] block"></span>
+          </button>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-8">
+          <a
+            href="#benefits"
+            class="text-[#333333] hover:text-[#E68A00] transition-colors font-medium"
+            >Преимущества</a
+          >
+          <a
+            href="#pricing"
+            class="text-[#333333] hover:text-[#E68A00] transition-colors font-medium"
+            >Цены</a
+          >
+          <a
+            href="#quality"
+            class="text-[#333333] hover:text-[#E68A00] transition-colors font-medium"
+            >Качество</a
+          >
+          <a
+            href="#structure"
+            class="text-[#333333] hover:text-[#E68A00] transition-colors font-medium"
+            >Структура</a
+          >
+          <a
+            href="#contacts"
+            class="text-[#333333] hover:text-[#E68A00] transition-colors font-medium"
+            >Контакты</a
+          >
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="lg:hidden hidden absolute top-full right-4 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 mt-2 overflow-hidden z-50"
+      >
+        <nav class="flex flex-col py-2">
+          <a
+            href="#benefits"
+            onclick="toggleMenu()"
+            class="px-6 py-4 text-[#333333] hover:bg-[#F5F5F7] hover:text-[#E68A00] transition-all font-medium border-b border-gray-50"
+            >Преимущества</a
+          >
+          <a
+            href="#pricing"
+            onclick="toggleMenu()"
+            class="px-6 py-4 text-[#333333] hover:bg-[#F5F5F7] hover:text-[#E68A00] transition-all font-medium border-b border-gray-50"
+            >Цены</a
+          >
+          <a
+            href="#quality"
+            onclick="toggleMenu()"
+            class="px-6 py-4 text-[#333333] hover:bg-[#F5F5F7] hover:text-[#E68A00] transition-all font-medium border-b border-gray-50"
+            >Качество</a
+          >
+          <a
+            href="#structure"
+            onclick="toggleMenu()"
+            class="px-6 py-4 text-[#333333] hover:bg-[#F5F5F7] hover:text-[#E68A00] transition-all font-medium border-b border-gray-50"
+            >Структура</a
+          >
+          <a
+            href="#contacts"
+            onclick="toggleMenu()"
+            class="px-6 py-4 text-[#333333] hover:bg-[#F5F5F7] hover:text-[#E68A00] transition-all font-medium"
+            >Контакты</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center pt-16"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="main-bg.jpg"
+          alt="Навои Плаза — Премиум жилой комплекс"
+          class="w-full h-full object-cover"
+        />
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 text-center px-4 py-20 max-w-4xl mx-auto">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20"
+        >
+          <span class="w-2 h-2 bg-[#E68A00] rounded-full animate-pulse"></span>
+          <span class="text-white/90 text-sm font-medium"
+            >Старт продаж 2026</span
+          >
+        </div>
+
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
+        >
+          Навои Плаза — <br />
+          <span class="text-gradient-gold">Ваша крепость</span> <br />
+          в центре Душанбе
+        </h1>
+
+        <p
+          class="text-lg sm:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed"
+        >
+          <span class="text-[#E68A00] font-semibold">16 этажей</span> •
+          <span class="text-[#E68A00] font-semibold"
+            >Сейсмостойкость 9 баллов</span
+          >
+          •
+          <span class="text-[#E68A00] font-semibold"
+            >Полная энергонезависимость</span
+          >
+        </p>
+
+        <!-- CTA Buttons -->
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <a
+            href="https://wa.me/992946377777?text=Здравствуйте!%20Хочу%20получить%20планировки%20жилого%20комплекса%20Навои%20Плаза"
+            target="_blank"
+            class="w-full sm:w-auto gradient-gold text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-[#E68A00]/30 hover:scale-105 transition-all flex items-center justify-center gap-2"
+          >
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Скачать планировки
+          </a>
+          <a
+            href="tel:+992946377777"
+            class="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-bold border border-white/30 hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+          >
+            <i data-lucide="phone" class="w-5 h-5"></i>
+            +992 94 637 77 77
+          </a>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 float-animation"
+        >
+          <i data-lucide="chevron-down" class="w-8 h-8 text-white/60"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section id="benefits" class="py-16 sm:py-24 bg-[#F5F5F7]">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Почему Навои Плаза</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 text-[#111111]">
+            Ключевые преимущества
+          </h2>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Benefit 1 -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all group gold-border card-shine"
+          >
+            <div
+              class="w-16 h-16 gradient-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="sun" class="w-8 h-8 text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-[#111111]">
+              Свет есть всегда
+            </h3>
+            <p class="text-[#333333] leading-relaxed">
+              Солнечные панели + резервный генератор обеспечивают бесперебойное
+              электроснабжение
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all group gold-border card-shine"
+          >
+            <div
+              class="w-16 h-16 gradient-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-[#111111]">
+              Сейсмостойкость 9 баллов
+            </h3>
+            <p class="text-[#333333] leading-relaxed">
+              Максимальная защита от землетрясений по международным стандартам
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all group gold-border card-shine"
+          >
+            <div
+              class="w-16 h-16 gradient-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="car" class="w-8 h-8 text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-[#111111]">
+              Двухуровневая парковка
+            </h3>
+            <p class="text-[#333333] leading-relaxed">
+              Просторная подземная парковка на 2 уровня для всех жителей
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all group gold-border card-shine"
+          >
+            <div
+              class="w-16 h-16 gradient-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="shopping-bag" class="w-8 h-8 text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-[#111111]">
+              Торговый центр внутри
+            </h3>
+            <p class="text-[#333333] leading-relaxed">
+              Все необходимое прямо в вашем доме: магазины, кафе, сервисы
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Инвестируйте в будущее</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 text-[#111111]">
+            Выберите свой уровень
+          </h2>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Card 1 - Lux -->
+          <div
+            class="relative bg-gradient-to-br from-[#111111] to-[#333333] rounded-3xl p-8 text-white overflow-hidden group hover:scale-[1.02] transition-transform"
+          >
+            <!-- Decorative -->
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-[#E68A00]/20 rounded-full blur-3xl"
+            ></div>
+
+            <div class="relative z-10">
+              <span
+                class="inline-block bg-[#E68A00] text-white text-xs font-bold px-3 py-1 rounded-full mb-4"
+                >ЛЮКС</span
+              >
+              <h3 class="text-2xl font-bold mb-2">3–12 Этажи</h3>
+              <p class="text-white/70 mb-6">
+                Семейный комфорт в премиум исполнении
+              </p>
+
+              <div class="mb-6">
+                <span class="text-sm text-white/60">от</span>
+                <span class="text-4xl sm:text-5xl font-extrabold text-[#E68A00]"
+                  >$1200</span
+                >
+                <span class="text-white/60">/м²</span>
+              </div>
+
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Просторные планировки</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Высокие потолки 3.2м</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Премиум отделка</span>
+                </li>
+              </ul>
+
+              <a
+                href="#contacts"
+                class="block w-full gradient-gold text-center py-4 rounded-full font-bold hover:shadow-lg hover:shadow-[#E68A00]/30 transition-all"
+              >
+                Забронировать
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 - Panoramic -->
+          <div
+            class="relative bg-white rounded-3xl p-8 overflow-hidden group hover:scale-[1.02] transition-transform border-2 border-[#E68A00] shadow-xl"
+          >
+            <!-- Popular Badge -->
+            <div class="absolute -top-0 -right-0">
+              <div
+                class="bg-[#E68A00] text-white text-xs font-bold px-6 py-2 rotate-0 rounded-bl-2xl"
+              >
+                ХИТ ПРОДАЖ
+              </div>
+            </div>
+
+            <div class="relative z-10">
+              <span
+                class="inline-block bg-[#111111] text-white text-xs font-bold px-3 py-1 rounded-full mb-4"
+                >ВИДОВЫЕ</span
+              >
+              <h3 class="text-2xl font-bold mb-2 text-[#111111]">
+                13–16 Этажи
+              </h3>
+              <p class="text-[#333333] mb-6">Панорамный вид на весь город</p>
+
+              <div class="mb-6">
+                <span class="text-sm text-[#333333]">от</span>
+                <span class="text-4xl sm:text-5xl font-extrabold text-[#E68A00]"
+                  >$1000</span
+                >
+                <span class="text-[#333333]">/м²</span>
+              </div>
+
+              <ul class="space-y-3 mb-8 text-[#111111]">
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Панорамные окна</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Вид на горы</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-5 h-5 text-[#E68A00]"
+                  ></i>
+                  <span>Эксклюзивные планировки</span>
+                </li>
+              </ul>
+
+              <a
+                href="#contacts"
+                class="block w-full bg-[#111111] text-white text-center py-4 rounded-full font-bold hover:bg-[#333333] transition-all"
+              >
+                Забронировать
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Construction Quality Section -->
+    <section id="quality" class="py-16 sm:py-24 bg-[#111111] text-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Строим на совесть</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">
+            Надежность в деталях
+          </h2>
+        </div>
+
+        <!-- Quality Features -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <!-- Feature 1 -->
+          <div
+            class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#E68A00]/50 transition-all group"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 bg-[#E68A00]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E68A00] transition-all"
+              >
+                <i
+                  data-lucide="factory"
+                  class="w-6 h-6 text-[#E68A00] group-hover:text-white transition-all"
+                ></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2">
+                  Собственный бетонный завод
+                </h3>
+                <p class="text-white/70">
+                  Бетон марки М100-М350 собственного производства с постоянным
+                  контролем качества
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#E68A00]/50 transition-all group"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 bg-[#E68A00]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E68A00] transition-all"
+              >
+                <i
+                  data-lucide="git-branch"
+                  class="w-6 h-6 text-[#E68A00] group-hover:text-white transition-all"
+                ></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2">Импортная арматура А500</h3>
+                <p class="text-white/70">
+                  Высококачественная арматура из Казахстана и России для
+                  максимальной прочности каркаса
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#E68A00]/50 transition-all group"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 bg-[#E68A00]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E68A00] transition-all"
+              >
+                <i
+                  data-lucide="square"
+                  class="w-6 h-6 text-[#E68A00] group-hover:text-white transition-all"
+                ></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2">Горячие алюминиевые окна</h3>
+                <p class="text-white/70">
+                  Термоизолированные окна с защитой от влаги и конденсата
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-[#E68A00]/50 transition-all group"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 bg-[#E68A00]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E68A00] transition-all"
+              >
+                <i
+                  data-lucide="layers"
+                  class="w-6 h-6 text-[#E68A00] group-hover:text-white transition-all"
+                ></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2">Фасад с утеплением</h3>
+                <p class="text-white/70">
+                  Современная система утепления фасада для комфортного климата
+                  круглый год
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Developer Badge -->
+        <div class="mt-12 text-center">
+          <div
+            class="inline-flex items-center gap-4 bg-white/5 rounded-full px-6 py-3 border border-white/10"
+          >
+            <i data-lucide="building-2" class="w-6 h-6 text-[#E68A00]"></i>
+            <span class="font-semibold"
+              >Застройщик:
+              <span class="text-[#E68A00]">Sarvar Inshot</span></span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Structure Section -->
+    <section id="structure" class="py-16 sm:py-24 bg-[#F5F5F7]">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Архитектура</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 text-[#111111]">
+            Структура комплекса
+          </h2>
+        </div>
+
+        <!-- Structure Image -->
+        <div class="mb-12 rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="structure.jpg"
+            alt="Структура Навои Плаза"
+            class="w-full h-64 sm:h-96 object-cover"
+          />
+        </div>
+
+        <!-- Structure Details -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Blocks Description -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg gold-border">
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center text-white font-bold text-xl"
+              >
+                A+B
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-[#111111]">Два блока</h3>
+                <p class="text-[#333333]">Соединены торговым центром</p>
+              </div>
+            </div>
+            <p class="text-[#333333] leading-relaxed">
+              Комплекс состоит из
+              <span class="font-bold text-[#E68A00]">Блока A</span> и
+              <span class="font-bold text-[#E68A00]">Блока B</span>, которые
+              соединены современным торговым центром с панорамной стеклянной
+              крышей. Уникальная архитектура создает единое пространство для
+              комфортной жизни.
+            </p>
+          </div>
+
+          <!-- Floor Distribution -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg gold-border">
+            <h3 class="text-xl font-bold mb-6 text-[#111111]">
+              Распределение этажей
+            </h3>
+            <div class="space-y-4">
+              <!-- Level 1 -->
+              <div class="flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-xl">
+                <div
+                  class="w-12 h-12 bg-[#333333] rounded-xl flex items-center justify-center text-white font-bold"
+                >
+                  1-2
+                </div>
+                <div>
+                  <span class="font-bold text-[#111111]"
+                    >Магазины и парковка</span
+                  >
+                  <p class="text-sm text-[#333333]">
+                    Торговые площади, двухуровневый паркинг
+                  </p>
+                </div>
+              </div>
+
+              <!-- Level 2 -->
+              <div class="flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-xl">
+                <div
+                  class="w-12 h-12 bg-[#E68A00] rounded-xl flex items-center justify-center text-white font-bold"
+                >
+                  3-5
+                </div>
+                <div>
+                  <span class="font-bold text-[#111111]">Люкс апартаменты</span>
+                  <p class="text-sm text-[#333333]">
+                    Премиальные квартиры с увеличенной площадью
+                  </p>
+                </div>
+              </div>
+
+              <!-- Level 3 -->
+              <div class="flex items-center gap-4 p-4 bg-[#F5F5F7] rounded-xl">
+                <div
+                  class="w-12 h-12 bg-[#111111] rounded-xl flex items-center justify-center text-white font-bold"
+                >
+                  6-16
+                </div>
+                <div>
+                  <span class="font-bold text-[#111111]"
+                    >Стандартные квартиры</span
+                  >
+                  <p class="text-sm text-[#333333]">
+                    Комфортные планировки для семей
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 sm:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Визуализация</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 text-[#111111]">
+            Галерея проекта
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div
+            class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+          >
+            <img
+              src="5.jpg"
+              alt="Лобби"
+              class="w-full h-40 sm:h-52 object-cover"
+            />
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+          >
+            <img
+              src="2.jpg"
+              alt="Интерьер"
+              class="w-full h-40 sm:h-52 object-cover"
+            />
+          </div>
+          <div
+            class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+          >
+            <img
+              src="3.jpg"
+              alt="Терраса"
+              class="w-full h-40 sm:h-52 object-cover"
+            />
+          </div>
+
+          <div
+            class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+          >
+            <img
+              src="4.jpg"
+              alt="Общий вид"
+              class="w-full h-40 sm:h-52 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section
+      id="contacts"
+      class="py-16 sm:py-24 bg-gradient-to-br from-[#111111] via-[#1a1a1a] to-[#111111] text-white relative overflow-hidden"
+    >
+      <!-- Decorative Elements -->
+      <div
+        class="absolute top-0 left-0 w-72 h-72 bg-[#E68A00]/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-96 h-96 bg-[#E68A00]/5 rounded-full blur-3xl"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span
+            class="text-[#E68A00] font-semibold text-sm uppercase tracking-wider"
+            >Свяжитесь с нами</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">
+            Записаться на просмотр
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Contact Form -->
+          <form id="google-sheet-form" class="space-y-4">
+            <div>
+              <input
+                name="name"
+                type="text"
+                placeholder="Ваше имя"
+                required
+                class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/50 focus:outline-none focus:border-[#E68A00] transition-all"
+              />
+            </div>
+            <div>
+              <input
+                name="phone"
+                type="tel"
+                placeholder="+992 ХХ ХХХ ХХ ХХ"
+                required
+                class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-white/50 focus:outline-none focus:border-[#E68A00] transition-all"
+              />
+            </div>
+            <div>
+              <select
+                name="type"
+                class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-4 text-white/70 focus:outline-none focus:border-[#E68A00] transition-all"
+              >
+                <option value="Не выбрано" class="bg-[#111111]">
+                  Выберите тип квартиры
+                </option>
+                <option value="Люкс" class="bg-[#111111]">
+                  Люкс (3-12 этажи)
+                </option>
+                <option value="Видовые" class="bg-[#111111]">
+                  Видовые (13-16 этажи)
+                </option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full gradient-gold text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-[#E68A00]/30 transition-all flex items-center justify-center gap-2"
+            >
+              <i data-lucide="send" class="w-5 h-5"></i>
+              Отправить заявку
+            </button>
+          </form>
+
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <!-- Phone -->
+            <div
+              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
+                >
+                  <i data-lucide="phone" class="w-7 h-7 text-white"></i>
+                </div>
+                <div>
+                  <p class="text-white/60 text-sm mb-1">Позвоните нам</p>
+                  <a
+                    href="tel:+992946377777"
+                    class="text-2xl sm:text-3xl font-bold hover:text-[#E68A00] transition-colors"
+                  >
+                    +992 94 637 77 77
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div
+              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
+                >
+                  <i data-lucide="map-pin" class="w-7 h-7 text-white"></i>
+                </div>
+                <div>
+                  <p class="text-white/60 text-sm mb-1">Наш адрес</p>
+                  <p class="text-lg font-semibold">
+                    Душанбе, ул. Нисора Мухаммада (Чехова)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Working Hours -->
+            <div
+              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
+                >
+                  <i data-lucide="clock" class="w-7 h-7 text-white"></i>
+                </div>
+                <div>
+                  <p class="text-white/60 text-sm mb-1">Время работы</p>
+                  <p class="text-lg font-semibold">Пн-Сб: 09:00 - 18:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="mt-4 bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 h-64"
+    >
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10972.740693076403!2d68.799584215572!3d38.56736175585054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b5d1007c09a37f%3A0x85d088d43efeb7f!2z0JbQmiBOYXZvaSBQbGF6YQ!5e1!3m2!1sru!2s!4v1768892962793!5m2!1sru!2s"
+        width="100%"
+        height="100%"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] text-white py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex-shrink-0">
+              <img
+                src="logo.jpg"
+                alt="Навои Плаза"
+                class="w-full h-full object-cover rounded-full border border-[#E68A00]"
+              />
+            </div>
+            <span
+              class="font-['Montserrat'] font-bold text-lg tracking-[0.15em]"
+              >НАВОИ ПЛАЗА</span
+            >
+          </div>
+
+          <!-- Copyright -->
+          <p class="text-white/50 text-sm text-center">
+            © 2026 Навои Плаза. Все права защищены. <br class="sm:hidden" />
+            Застройщик: Sarvar Inshot
+          </p>
+
+          <!-- Social -->
+          <div class="flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/navoi.plaza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#E68A00] transition-all"
+            >
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+
+            <a
+              href="https://t.me/SohtmoniNavoiPlaza"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#E68A00] transition-all"
+            >
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div
+      class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 p-4 lg:hidden z-50 shadow-lg"
+    >
+      <div class="flex items-center gap-3 max-w-lg mx-auto">
+        <a
+          href="tel:+992946377777"
+          class="flex-1 gradient-gold text-white py-3.5 rounded-full font-bold text-center flex items-center justify-center gap-2 shadow-lg"
+        >
+          <i data-lucide="phone" class="w-5 h-5"></i>
+          +992 94 637 77 77
+        </a>
+        <a
+          href="#contacts"
+          class="w-14 h-14 bg-[#111111] rounded-full flex items-center justify-center text-white"
+        >
+          <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Add padding for sticky footer -->
+    <div class="h-20 lg:hidden"></div>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const burger = document.getElementById("burger");
+        menu.classList.toggle("hidden");
+        burger.classList.toggle("menu-open");
+      }
+
+      // Header scroll effect
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          header.classList.add("shadow-md");
+        } else {
+          header.classList.remove("shadow-md");
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const headerHeight = document.getElementById("header").offsetHeight;
+            const targetPosition =
+              target.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission handler
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxjtXnkvim6M1Bv9eQJWLME0_dngCVxMYXkHlrOWZGlPEOqO1Tk_tCAeaw0zYc2PBuI/exec";
+      const form = document.getElementById("google-sheet-form");
+      const btn = document.getElementById("submit-btn");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Отправка...";
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            alert("Спасибо! Мы получили вашу заявку");
+            btn.disabled = false;
+            btn.innerHTML =
+              '<i data-lucide="send" class="w-5 h-5"></i> Отправить заявку';
+            form.reset();
+            lucide.createIcons(); // Перерисовать иконку
+          })
+          .catch((error) => {
+            console.error("Error!", error.message);
+            alert("Произошла ошибка при отправке.");
+            btn.disabled = false;
+          });
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and sections for animation
+      document.querySelectorAll(".rounded-2xl, .rounded-3xl").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
+      });
+
+      // Reset visibility for hero elements
+      document
+        .querySelectorAll(".hero-overlay + div *, header *")
+        .forEach((el) => {
+          if (el.style) {
+            el.style.opacity = "1";
+            el.style.transform = "none";
+          }
+        });
+    </script>
+  </body>
+</html>
