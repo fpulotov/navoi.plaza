@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Навои Плаза — Премиум жилье в Душанбе" />
+    <meta
+      property="og:description"
+      content="Рассрочка 0%. Получите планировки и цены в нашем боте."
+    />
+    <meta property="og:image" content="logo.jpg" />
     <title>Навои Плаза — Премиум жилой комплекс в Душанбе</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -13,6 +19,57 @@
       rel="stylesheet"
     />
     <style>
+      /* Добавь это в стили */
+      .quiz-step {
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .quiz-step.hidden {
+        display: none;
+      }
+      .quiz-option {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        text-align: left;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-bottom: 0.75rem;
+      }
+      .quiz-option:hover {
+        background: rgba(255, 179, 71, 0.1);
+        border-color: #ffb347;
+      }
+      .quiz-option.active {
+        background: #ffb347;
+        color: #111111;
+      }
+      .quiz-input {
+        width: 100%;
+        height: 3.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 0 1.25rem;
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .quiz-input:focus {
+        outline: none;
+        border-color: #ffb347;
+      }
       * {
         font-family: "Manrope", sans-serif;
       }
@@ -238,19 +295,12 @@
           class="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
-            href="https://t.me/navoiplazaa_bot"
+            href="#contacts"
             target="_blank"
             class="w-full sm:w-auto gradient-gold text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl hover:shadow-[#FFB347]/30 hover:scale-105 transition-all flex items-center justify-center gap-2"
           >
-            <i data-lucide="message-circle" class="w-5 h-5"></i>
-            Скачать планировки
-          </a>
-          <a
-            href="tel:+992946377777"
-            class="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-bold border border-white/30 hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-          >
-            <i data-lucide="phone" class="w-5 h-5"></i>
-            +992 94 637 77 77
+            <i data-lucide="layout-list" class="w-5 h-5"></i>
+            Получить планировки
           </a>
         </div>
 
@@ -801,160 +851,262 @@
       <div class="max-w-7xl mx-auto px-4 relative z-10">
         <!-- Section Header -->
         <div class="text-center mb-12">
-          <span
-            class="text-[#FFB347] font-bold text-sm uppercase tracking-wider"
-            >Свяжитесь с нами</span
-          >
           <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">
-            Записаться на просмотр
+            Получите подборку планировок
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Contact Form -->
-          <form id="google-sheet-form" class="flex flex-col gap-4">
-            <div class="relative group">
+        <div
+          id="quiz-container"
+          class="bg-white/5 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl"
+        >
+          <div class="mb-8">
+            <div class="flex justify-between text-xs mb-2">
+              <span class="text-[#FFB347] font-bold uppercase"
+                >Подбор планировки</span
+              >
+              <span id="quiz-step-counter" class="text-white/50"
+                >Шаг 1 из 4</span
+              >
+            </div>
+            <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+              <div
+                id="quiz-progress"
+                class="h-full gradient-gold transition-all duration-500"
+                style="width: 25%"
+              ></div>
+            </div>
+          </div>
+
+          <form id="google-sheet-form">
+            <div class="quiz-step" data-step="1">
+              <h3 class="text-xl font-bold mb-6">
+                Для какой цели ищете квартиру?
+              </h3>
+              <button
+                type="button"
+                onclick="setAnswer('quiz_purpose', 'Для жизни', 1)"
+                class="quiz-option"
+              >
+                Для собственного проживания
+              </button>
+              <button
+                type="button"
+                onclick="setAnswer('quiz_purpose', 'Инвестиции', 1)"
+                class="quiz-option"
+              >
+                Инвестиции (сдача или перепродажа)
+              </button>
+            </div>
+
+            <div class="quiz-step hidden" data-step="2">
+              <h3 class="text-xl font-bold mb-6">
+                Какая площадь вам подходит?
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onclick="setAnswer('quiz_area', 'До 50 м²', 2)"
+                  class="quiz-option text-center"
+                >
+                  До 50 м²
+                </button>
+                <button
+                  type="button"
+                  onclick="setAnswer('quiz_area', '50-80 м²', 2)"
+                  class="quiz-option text-center"
+                >
+                  50-80 м²
+                </button>
+                <button
+                  type="button"
+                  onclick="setAnswer('quiz_area', '80-120 м²', 2)"
+                  class="quiz-option text-center"
+                >
+                  80-120 м²
+                </button>
+                <button
+                  type="button"
+                  onclick="setAnswer('quiz_area', '120+ м²', 2)"
+                  class="quiz-option text-center"
+                >
+                  120+ м²
+                </button>
+              </div>
+              <button
+                type="button"
+                onclick="prevStep()"
+                class="mt-4 text-white/40 text-sm underline"
+              >
+                ← Назад
+              </button>
+            </div>
+
+            <div class="quiz-step hidden" data-step="3">
+              <h3 class="text-xl font-bold mb-6">
+                Какой уровень комфорта рассматриваете?
+              </h3>
+              <button
+                type="button"
+                onclick="setAnswer('quiz_type', 'Бизнес (3-12 эт)', 3)"
+                class="quiz-option"
+              >
+                <span class="block font-bold">Бизнес-класс</span>
+                <span class="text-xs opacity-60">Комфортные этажи (3-12)</span>
+              </button>
+              <button
+                type="button"
+                onclick="setAnswer('quiz_type', 'Премиум (13-16 эт)', 3)"
+                class="quiz-option"
+              >
+                <span class="block font-bold">Премиум-класс</span>
+                <span class="text-xs opacity-60">Панорамные виды (13-16)</span>
+              </button>
+              <button
+                type="button"
+                onclick="prevStep()"
+                class="mt-4 text-white/40 text-sm underline"
+              >
+                ← Назад
+              </button>
+            </div>
+
+            <div class="quiz-step hidden" data-step="4">
+              <div class="text-center mb-6">
+                <div
+                  class="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i data-lucide="gift" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold">Все готово для получения!</h3>
+                <p class="text-white/60 text-sm mt-2">
+                  Оставьте контакты, чтобы открыть доступ к планировкам в
+                  Telegram-боте
+                </p>
+              </div>
+
               <input
-                name="name"
                 type="text"
+                name="name"
                 placeholder="Ваше имя"
                 required
-                class="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-5 text-white placeholder-white/40 focus:outline-none focus:border-[#FFB347] focus:bg-white/10 transition-all duration-300"
+                class="quiz-input"
               />
-            </div>
-
-            <div class="relative group">
-              <select
-                name="area"
-                required
-                class="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-5 text-white/70 appearance-none focus:outline-none focus:border-[#FFB347] focus:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <option
-                  value=""
-                  disabled
-                  selected
-                  class="bg-[#1a1a1a] text-white"
-                >
-                  Выберите площадь
-                </option>
-                <option value="до 50 м²" class="bg-[#1a1a1a] text-white">
-                  до 50 м²
-                </option>
-                <option value="50-80 м²" class="bg-[#1a1a1a] text-white">
-                  50-80 м²
-                </option>
-                <option value="80-120 м²" class="bg-[#1a1a1a] text-white">
-                  80-120 м²
-                </option>
-                <option value="120+ м²" class="bg-[#1a1a1a] text-white">
-                  более 120 м²
-                </option>
-              </select>
-              <div
-                class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/30"
-              >
-                <i data-lucide="chevron-down" class="w-5 h-5"></i>
-              </div>
-            </div>
-
-            <div class="relative group">
               <input
-                name="phone"
                 type="tel"
+                name="phone"
                 placeholder="+992 ХХ ХХХ ХХ ХХ"
                 required
-                class="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-5 text-white placeholder-white/40 focus:outline-none focus:border-[#FFB347] focus:bg-white/10 transition-all duration-300"
+                class="quiz-input"
               />
-            </div>
 
-            <div class="relative group">
-              <select
-                name="type"
-                class="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-5 text-white/70 appearance-none focus:outline-none focus:border-[#FFB347] focus:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <option value="Не выбрано" class="bg-[#1a1a1a] text-white">
-                  Выберите тип квартиры
-                </option>
-                <option value="Люкс" class="bg-[#1a1a1a] text-white">
-                  Люкс (3-12 этажи)
-                </option>
-                <option value="Видовые" class="bg-[#1a1a1a] text-white">
-                  Видовые (13-16 этажи)
-                </option>
-              </select>
-              <div
-                class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/30"
-              >
-                <i data-lucide="chevron-down" class="w-5 h-5"></i>
-              </div>
-            </div>
+              <input type="hidden" name="quiz_purpose" id="quiz_purpose" />
+              <input type="hidden" name="quiz_area" id="quiz_area" />
+              <input type="hidden" name="quiz_type" id="quiz_type" />
 
-            <button
-              type="submit"
-              id="submit-btn"
-              class="w-full h-14 mt-2 gradient-gold text-white rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(255,179,71,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <i data-lucide="send" class="w-5 h-5"></i>
-              Отправить заявку
-            </button>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full h-14 gradient-gold text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2"
+              >
+                <i data-lucide="download" class="w-5 h-5"></i>
+                Получить планировки
+              </button>
+              <button
+                type="button"
+                onclick="prevStep()"
+                class="mt-4 w-full text-white/40 text-sm underline"
+              >
+                Изменить ответы
+              </button>
+            </div>
           </form>
 
-          <!-- Contact Info -->
-          <div class="space-y-6">
-            <!-- Phone -->
+          <div id="quiz-success" class="hidden text-center py-10">
             <div
-              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+              class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
             >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
-                >
-                  <i data-lucide="phone" class="w-7 h-7 text-white"></i>
-                </div>
-                <div>
-                  <p class="text-white/60 text-sm mb-1">Позвоните нам</p>
-                  <a
-                    href="tel:+992946377777"
-                    class="text-2xl sm:text-3xl font-bold hover:text-[#FFB347] transition-colors"
+              <i data-lucide="check" class="w-10 h-10 text-green-500"></i>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4">Данные сохранены!</h3>
+            <p class="text-white/60 mb-8">
+              Теперь вы можете скачать актуальные планировки в нашем
+              Telegram-боте
+            </p>
+
+            <a
+              href="https://t.me/navoiplazaa_bot"
+              target="_blank"
+              class="inline-flex items-center gap-3 bg-[#229ED9] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all"
+            >
+              <i data-lucide="send"></i>
+              Открыть Telegram-бот
+            </a>
+          </div>
+
+          <div class="border-t border-white/10 pt-12">
+            <div class="text-center mb-8">
+              <h3 class="text-xl font-bold text-white">Наши контакты</h3>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-6">
+              <!-- Phone -->
+              <div
+                class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
                   >
-                    +992 94 637 77 77
-                  </a>
+                    <i data-lucide="phone" class="w-7 h-7 text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-white/60 text-sm mb-1">Позвоните нам</p>
+                    <a
+                      href="tel:+992946377777"
+                      class="text-2xl sm:text-3xl font-bold hover:text-[#FFB347] transition-colors"
+                    >
+                      +992 94 637 77 77
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Working Hours -->
-            <div
-              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
-                >
-                  <i data-lucide="clock" class="w-7 h-7 text-white"></i>
-                </div>
-                <div>
-                  <p class="text-white/60 text-sm mb-1">Время работы</p>
-                  <p class="text-lg font-bold">Пн-Вс: 09:00 - 21:00</p>
+              <!-- Working Hours -->
+              <div
+                class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
+                  >
+                    <i data-lucide="clock" class="w-7 h-7 text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-white/60 text-sm mb-1">Время работы</p>
+                    <p class="text-lg font-bold">Пн-Вс: 09:00 - 21:00</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Address -->
-            <div
-              class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
-                >
-                  <i data-lucide="map-pin" class="w-7 h-7 text-white"></i>
-                </div>
-                <div>
-                  <p class="text-white/60 text-sm mb-1">Наш адрес</p>
-                  <p class="text-lg font-bold">
-                    Душанбе, ул. Нисора Мухаммада (Чехова)
-                  </p>
+              <!-- Address -->
+              <div
+                class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-14 h-14 gradient-gold rounded-2xl flex items-center justify-center"
+                  >
+                    <i data-lucide="map-pin" class="w-7 h-7 text-white"></i>
+                  </div>
+                  <div>
+                    <p class="text-white/60 text-sm mb-1">Наш адрес</p>
+                    <p class="text-lg font-bold">
+                      Душанбе, ул. Нисора Мухаммада (Чехова)
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1108,6 +1260,58 @@
       });
 
       // Form submission handler
+      let currentStep = 1;
+      const totalSteps = 4;
+
+      function setAnswer(fieldId, value, step) {
+        document.getElementById(fieldId).value = value;
+
+        // Визуальная подсветка (опционально)
+        const currentStepEl = document.querySelector(
+          `.quiz-step[data-step="${step}"]`,
+        );
+        currentStepEl.querySelectorAll(".quiz-option").forEach((opt) => {
+          if (opt.innerText.includes(value))
+            opt.classList.add("border-[#FFB347]", "bg-[#FFB347]/10");
+        });
+
+        setTimeout(() => nextStep(), 300);
+      }
+
+      function nextStep() {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateQuiz();
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          updateQuiz();
+        }
+      }
+
+      function updateQuiz() {
+        // Скрываем все шаги
+        document
+          .querySelectorAll(".quiz-step")
+          .forEach((s) => s.classList.add("hidden"));
+        // Показываем текущий
+        document
+          .querySelector(`.quiz-step[data-step="${currentStep}"]`)
+          .classList.remove("hidden");
+
+        // Обновляем прогресс
+        const progress = (currentStep / totalSteps) * 100;
+        document.getElementById("quiz-progress").style.width = progress + "%";
+        document.getElementById("quiz-step-counter").innerText =
+          `Шаг ${currentStep} из ${totalSteps}`;
+
+        lucide.createIcons();
+      }
+
+      // Обработка отправки
       const scriptURL =
         "https://script.google.com/macros/s/AKfycbxjtXnkvim6M1Bv9eQJWLME0_dngCVxMYXkHlrOWZGlPEOqO1Tk_tCAeaw0zYc2PBuI/exec";
       const form = document.getElementById("google-sheet-form");
@@ -1116,21 +1320,22 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         btn.disabled = true;
-        btn.innerText = "Отправка...";
+        btn.innerText = "Загрузка...";
 
         fetch(scriptURL, { method: "POST", body: new FormData(form) })
           .then((response) => {
-            alert("Спасибо! Мы получили вашу заявку");
-            btn.disabled = false;
-            btn.innerHTML =
-              '<i data-lucide="send" class="w-5 h-5"></i> Отправить заявку';
-            form.reset();
-            lucide.createIcons(); // Перерисовать иконку
+            // скрываем форму
+            form.classList.add("hidden");
+
+            // показываем блок успеха
+            document.getElementById("quiz-success").classList.remove("hidden");
+
+            lucide.createIcons();
           })
           .catch((error) => {
-            console.error("Error!", error.message);
-            alert("Произошла ошибка при отправке.");
+            alert("Ошибка при отправке. Попробуйте снова.");
             btn.disabled = false;
+            btn.innerText = "Получить планировки";
           });
       });
 
